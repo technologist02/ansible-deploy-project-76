@@ -1,0 +1,12 @@
+- hosts: all
+
+  vars:
+    pip_install_packages:
+      - docker
+      - awscli
+
+  tasks:
+    - name: Ставим докер
+      import_role:
+        name: geerlingguy.pip
+      become: yes

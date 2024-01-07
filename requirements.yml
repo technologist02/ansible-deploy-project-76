@@ -1,0 +1,4 @@
+roles:
+    # pip docker
+  - name: geerlingguy.pip
+    version: 3.0.1
