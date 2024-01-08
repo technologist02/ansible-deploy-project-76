@@ -10,3 +10,19 @@
       import_role:
         name: geerlingguy.pip
       become: yes
+      
+    - name: Start redmine
+      community.docker.docker_container:
+        image: redmine:latest
+        name: redmine
+        pull: true
+        restart: true
+        ports:
+          - "3000:3000"
+        env:
+          REDMINE_DB_POSTGRES: "{{ db_host }}"
+          REDMINE_DB_PORT: "{{ db_port }}"
+          REDMINE_DB_DATABASE: "{{ db_name }}"
+          REDMINE_DB_USERNAME: "{{ db_user }}"
+      tags: start
+      become: yes
